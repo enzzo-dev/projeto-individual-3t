@@ -41,7 +41,7 @@ namespace ProjetoInicial.webApi.Controllers
                     new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, usuario.IdUsuario.ToString()),
                     new Claim(ClaimTypes.Role, usuario.IdTiposUsuario.ToString()),
-                    new Claim("Roles", usuario.IdTiposUsuario.ToString())
+                    new Claim("role", usuario.IdTiposUsuario.ToString())
                 };
 
 

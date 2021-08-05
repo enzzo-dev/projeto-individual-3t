@@ -17,10 +17,8 @@ VALUES			  (1, 'Sala1', 25, 2)
 GO
 
 INSERT INTO equipamentos (marca, tipo, numeroSerie, descricao, numeroPatrimonio, disponivel)
-VALUES					 ('Phillips','Eletroeletrônica','123456', 'Jogo de chaves', '220456', 1 )
-						,('Panasonic','Eletroeletrônica','785466', 'Câmero Digital', '554023', 0 )
-						,('HP', 'Informática', '123879','Laptop', '443522', 0 )
-						,('Sony', 'Informática', '456457','Fone de ouvido', '456888', 0 )
+VALUES			
+						('Samsung','Informática', '15621', 'Notebook','342216',1)
 GO
 
 INSERT INTO salasEquipamentos (idSala, idEquipamento)
