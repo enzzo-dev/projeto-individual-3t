@@ -45,3 +45,7 @@ CREATE TABLE salasEquipamentos(
 )
 GO
 
+SELECT * FROM usuario
+
+Delete  From usuario WHERE idUsuario = 4;
+

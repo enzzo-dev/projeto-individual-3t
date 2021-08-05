@@ -51,7 +51,27 @@ namespace ProjetoInicial.webApi.Repositories
 
         public List<SalasEquipamento> ListarTodos()
         {
-           return ctx.SalasEquipamentos.ToList();
+            ///Realizar SELECT na sala equipamentos para serem listados
+            ///
+            return ctx.SalasEquipamentos.Select(u => new SalasEquipamento
+            {
+                IdEquipamentoNavigation = new Equipamento
+                {
+                    IdEquipamento = u.IdEquipamentoNavigation.IdEquipamento,
+                    Marca = u.IdEquipamentoNavigation.Marca,
+                    Descricao = u.IdEquipamentoNavigation.Descricao,
+                    NumeroSerie = u.IdEquipamentoNavigation.NumeroSerie
+                },
+                
+                IdSalaNavigation = new Sala
+                {
+                    IdSala = u.IdSalaNavigation.IdSala,
+                    Nome = u.IdSalaNavigation.Nome,
+                    Metragem = u.IdSalaNavigation.Metragem,
+                    Andar = u.IdSalaNavigation.Andar
+                }
+
+            }).ToList();
         }
     }
 }
