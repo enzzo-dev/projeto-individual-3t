@@ -50,6 +50,11 @@ namespace ProjetoInicial.webApi.Repositories
             
         }
 
+        public Equipamento BuscarPorId(int id)
+        {
+            return ctx.Equipamentos.FirstOrDefault(equipamento => equipamento.IdEquipamento == id);
+        }
+
         public List<Equipamento> ListarTodos()
         {
             return ctx.Equipamentos.ToList();

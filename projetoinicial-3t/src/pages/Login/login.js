@@ -23,7 +23,7 @@ function Login(){
                 switch(parseJwt().role)
                 {
                     case '1':
-                        window.location.replace("http://localhost:3000/cadastrousuarios")
+                        window.location.replace("http://localhost:3000/cadastrousuario")
                     break;
 
                     case '2':
