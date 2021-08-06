@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Switch } from 'react-router-dom'
+import './equipamento.css'
+import Header from '../../Components/header/header'
 
 function Equipamento(){
 
@@ -63,55 +65,101 @@ function Equipamento(){
 
     return(
         <div>
-            <main>
-                <table>
-                    <thead>
-                        <td>#</td>
-                        <td>Marca</td>
-                        <td>Tipo</td>
-                        <td>Numero de Serie</td>
-                        <td>Descricao</td>
-                        <td>Numero do Patrimonio</td>
-                        <td>Disponivel</td>
-                    </thead>
+            <Header />
+           <main>
+                <section className="sec_1">
+                    <div className="content">
+                        <div className="titulo-cadastrarEquipamento">
+                            <h1>Cadastrar Equipamento</h1>
+                            <hr />
+                        </div>
+                    </div>
 
-                    <tbody>
-                        {
-                            listaEquipamento.map(equipamento => {
-                                return(
-                                    
-                                    <tr key={equipamento.idEquipamento}>
-                                        <td>{equipamento.idEquipamento}</td>
-                                        <td>{equipamento.marca}</td>
-                                        <td>{equipamento.tipo}</td>
-                                        <td>{equipamento.numeroSerie}</td>
-                                        <td>{equipamento.descricao}</td>
-                                        <td>{equipamento.numeroPatrimonio}</td>
-                                        <td>{
-                                            equipamento.disponivel == true && "Ativo" || "Inativo"
-                                            }</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
+                    <form className="form content">
+                        <div class="grid_1">
+                            <input type="text" placeholder="Tipo de Equipamento"/>
+                            <input type="text" name="email" placeholder="Marca" class="input watermark" />
+                        </div>
 
-                <section>
-                    <form>
-                        <input
-                            value={numeroSerie}
-                            name="numeroSerie"
-                            type="text"
-                            onChange={(event) => {setNumeroSerie(event.target.value)}}
-                        />
-                        <input
-                            value={numeroPatrimonio}
-                            name="numeroPatrimonio"
-                            type="text"
-                            onChange={(event) => {setNumeroPatrimonio(event.target.value)}}   
-                        />
+                        <div className="grid_1">  
 
+                            <input type="number" name="name" placeholder="Nº de Serie" class="input watermark" />
+                            <input type="number" name="empresa" placeholder="Nº de Patrimonio" class="input watermark" />
+
+                        </div>
+
+                        <input type="text" className="descricao" name="text" placeholder="Descrição" />
+
+                        <h2>Estado</h2>
+                    <div className="coluna">
+                            <div class="coluna2">
+
+                                <input type="checkbox" name="estado" id="estado" />
+                                <label for="estado">Ativo</label>
+
+                            </div>
+                            <div className="coluna2">
+
+                                <input type="checkbox" name="estado" id="estado" />
+                                <label for="estado">Inativo</label>
+
+                            </div>
+                    </div>
+
+                            <div className="grid_1"id="botao">
+                                <button type="submit" name="button">Cadastrar</button>
+                            </div>
+                    
+                    </form>
+                </section>
+
+                
+                <section className="sec_1">
+                    <div className="content">
+                        <div class="titulo-cadastrarEquipamento">
+                            <h1>Editar Equipamento</h1>
+                            <hr></hr>
+                        </div>
+            
+                    </div>
+
+                    <form className="form content">
+                        <div class="grid_1">
+
+                            <input type="text" placeholder="Tipo de Equipamento"/>
+                            <input type="text" name="email" placeholder="Marca" class="input watermark" />
+
+                        </div>
+
+                        <div className="grid_1">                    
+
+                            <input type="number" name="name" placeholder="Nº de Serie" class="input watermark" />
+                            <input type="number" name="empresa" placeholder="Nº de Patrimonio" class="input watermark" />
+
+                        </div>
+
+                        <input type="text" className="descricao" name="text" placeholder="Descrição" />
+
+                        <h2>Estado</h2>
+                    <div className="coluna">
+                            <div className="coluna2">
+
+                                <input type="checkbox" name="estado" id="estado" />
+                                <label for="estado">Ativo</label>
+
+                            </div>
+                            <div className="coluna2">
+
+                                <input type="checkbox" name="estado" id="estado" />
+                                <label for="estado">Inativo</label>
+                
+                            </div>
+                    </div>
+                    
+                    <div className="grid_1"id="botao">
+                            <button type="submit" name="button">Editar</button>
+                    </div>
+                    
                     </form>
                 </section>
             </main>

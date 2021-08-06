@@ -30,5 +30,62 @@ function Usuario(){
 
             .catch((error) => console.log(error))
     )}
+
+    return(
+        <div>
+         {/* <main>
+                <table>
+                    <thead>
+                        <td>#</td>
+                        <td>Marca</td>
+                        <td>Tipo</td>
+                        <td>Numero de Serie</td>
+                        <td>Descricao</td>
+                        <td>Numero do Patrimonio</td>
+                        <td>Disponivel</td>
+                    </thead>
+
+                    <tbody>
+                        {
+                            listaEquipamento.map(equipamento => {
+                                return(
+                                    
+                                    <tr key={equipamento.idEquipamento}>
+                                        <td>{equipamento.idEquipamento}</td>
+                                        <td>{equipamento.marca}</td>
+                                        <td>{equipamento.tipo}</td>
+                                        <td>{equipamento.numeroSerie}</td>
+                                        <td>{equipamento.descricao}</td>
+                                        <td>{equipamento.numeroPatrimonio}</td>
+                                        <td>{
+                                            equipamento.disponivel == true && "Ativo" || "Inativo"
+                                            }</td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+
+                <section>
+                    <form>
+                        <input
+                            value={numeroSerie}
+                            name="numeroSerie"
+                            type="text"
+                            onChange={(event) => {setNumeroSerie(event.target.value)}}
+                        />
+                        <input
+                            value={numeroPatrimonio}
+                            name="numeroPatrimonio"
+                            type="text"
+                            onChange={(event) => {setNumeroPatrimonio(event.target.value)}}   
+                        />
+
+                    </form>
+                </section>
+            </main> */}
+            </div>
+    )
 }
 export default Usuario;
