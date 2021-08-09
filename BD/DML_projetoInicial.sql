@@ -27,4 +27,4 @@ VALUES						  (1, 3),
 							  (2,2)
 GO
 
-select * from equipamentos
+select * from salas

@@ -4,6 +4,7 @@ import { parseJwt } from '../../services/auth'
 import { useHistory } from 'react-router'
 import Header from '../../Components/header/header'
 import './login.css'
+import Helmet  from 'react-helmet'
 
 function Login(){
     const [email, setEmail] = useState('')
@@ -40,6 +41,9 @@ function Login(){
 
         return(
             <div className="bodyLgn">
+                <Helmet>
+                    <title>SM - Login</title>
+                </Helmet>
                 {/* <form onSubmit={efetuaLogin}>
                     <h2>Login:</h2>
                     <input
@@ -64,7 +68,7 @@ function Login(){
                 </form> */}
                 <main>
                     <section class="login">
-                        <h1 style={{color:'white'}}>LOGIN</h1>
+                        <h1>LOGIN</h1>
                         <form onSubmit={efetuaLogin} class="form">
                             <div class="item">
                                 <input

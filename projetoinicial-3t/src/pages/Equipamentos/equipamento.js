@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Switch } from 'react-router-dom'
 import './equipamento.css'
 import Header from '../../Components/header/header'
+import { Helmet } from 'react-helmet'
 
 function Equipamento(){
 
@@ -122,6 +123,10 @@ function Equipamento(){
 
     return(
         <div>
+            <Helmet>
+                <title>SM - Equipamentos</title>
+                <link rel="icon" type="image/ico" href="https://www.sp.senai.br/favicon.ico"></link>
+            </Helmet>
             <Header />
            <main>
                 <section className="sec_1">

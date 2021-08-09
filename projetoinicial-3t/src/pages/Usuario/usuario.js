@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import Header from "../../Components/header/header";
+import Helmet from 'react-helmet'
 
 function Usuario(){
     const[nome, setNome] = useState('')
@@ -133,6 +134,9 @@ function Usuario(){
     useEffect(buscarTiposUsuarios, []) 
     return(
         <div>
+            <Helmet>
+                    <title>SM - Usuário</title>
+            </Helmet>
             <Header />
             <main>
             <section className="sec_1">
@@ -171,6 +175,7 @@ function Usuario(){
                                         idUsuario === 0 ? 'Cadastrar' : 'Atualizar'
                                     }
                                 </button>
+                                <button onClick={limparCampos}>Cancelar</button>
                             </div>
                     
                     </form>

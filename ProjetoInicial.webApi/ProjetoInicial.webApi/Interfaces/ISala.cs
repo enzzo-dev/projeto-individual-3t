@@ -8,7 +8,7 @@ namespace ProjetoInicial.webApi.Interfaces
 {
     interface ISala
     {
-        List<Sala> ListarTodos();
+        List<Sala> ListarTodos(int id);
 
         void Cadastrar(Sala novaSala);
 

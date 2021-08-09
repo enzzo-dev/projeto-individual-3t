@@ -1,6 +1,7 @@
 import './header.css'
 import logo from '../../assets/img/senai-logo.png'
 
+
  function Header(){
 
     function logout(){
@@ -9,12 +10,11 @@ import logo from '../../assets/img/senai-logo.png'
 
     return(
         <div>
-            
             <header className="cabecalho-principal">
                 <div className="container">
-                    <img src={logo} alt="Image" height="50" width="220" /> 
+                    <a href="/home"><img src={logo} alt="Image" height="50" width="220" /></a>
                     <nav className="cabecalhoPrincipal-nav">
-                        <a href="#">Salas</a>
+                        <a href="/cadastrarsala">Salas</a>
                         <a href="/cadastrarequipamento">Equipamentos</a>
                         <a href="/cadastrarusuario">Usuários</a>
                         <a onClick={ () => logout} href="/">Sair</a>

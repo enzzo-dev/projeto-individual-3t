@@ -28,12 +28,12 @@ namespace ProjetoInicial.webApi.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de salas</returns>
         [Authorize]
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
             try
             {
-                return Ok(_salaRepository.ListarTodos());
+                return Ok(_salaRepository.ListarTodos(id));
             }
             catch (Exception e)
             {
@@ -67,9 +67,9 @@ namespace ProjetoInicial.webApi.Controllers
         /// <param name="id">Id da sala que será atualizada</param>
         /// <param name="salaAtualizada">Credenciais atualizadas da sala</param>
         /// <returns>Retorna um StatusCode NoContent</returns>
-        [HttpPatch("{id}")]
-        [Authorize(Roles = "1")]
-        public IActionResult Patch(int id, Sala salaAtualizada)
+        [HttpPut("{id}")]
+        [Authorize]
+        public IActionResult Put(int id, Sala salaAtualizada)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace ProjetoInicial.webApi.Controllers
         /// <param name="id">Id da sala que será deletada</param>
         /// <returns>Retorna um StatusCode NoContent</returns>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "1")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

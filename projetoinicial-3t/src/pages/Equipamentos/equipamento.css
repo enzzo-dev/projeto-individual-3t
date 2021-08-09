@@ -63,6 +63,11 @@ body hr{
     background-color: transparent;
 }
 
+.grid_1 label{
+    padding-bottom: 40px;
+
+}
+
 .grid_1 select{
     width: 45%;
     height: 2rem;
