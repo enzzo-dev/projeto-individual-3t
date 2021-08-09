@@ -47,5 +47,5 @@ GO
 
 SELECT * FROM usuario
 
-Delete  From usuario WHERE idUsuario = 4;
+Delete  From equipamentos WHERE marca = "Panasonic";
 

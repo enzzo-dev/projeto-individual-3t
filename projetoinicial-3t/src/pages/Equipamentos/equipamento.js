@@ -16,7 +16,7 @@ function Equipamento(){
     const [idEquipamento, setIdEquipamento] = useState(0)
 
     function buscarEquipamentos(){
-        axios("http://localhost:5000/api/equipamento",  {
+        axios.get("http://localhost:5000/api/equipamento",  {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -34,38 +34,69 @@ function Equipamento(){
         
     }
 
+    function limparCampos(){
+        setIdEquipamento(0)
+        setMarca('')
+        setTipo('')
+        setNumeroSerie(0)
+        setNumeroPatrimonio(0)
+        setDescricao('')
+    }
+
     function cadastrarEquipamentos(event){
-
-        
-            
-        let cadastro = {
-            marca : marca,
-            tipo : tipo,
-            numeroSerie : numeroSerie,
-            descricao : descricao,
-            numeroPatrimonio : numeroPatrimonio,
-            disponivel : disponivel
-        }
-
-        axios.post("http://localhost:5000/api/equipamento",cadastro, {
+        if( idEquipamento !== 0){
+            let equipamentos = {
+                marca : marca,
+                tipo : tipo,
+                numeroSerie : numeroSerie,
+                descricao : descricao,
+                numeroPatrimonio : numeroPatrimonio,
+                disponivel : disponivel
+            }
+            axios.put('http://localhost:5000/api/equipamento/'+idEquipamento,equipamentos, {
                 headers : {
                     'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
                 }
+            })
+            .then(resposta => {
+                if(resposta.data === 204){
+                    console.log('Equipamento atualizado!')
+                    buscarEquipamentos()
+                    limparCampos()
+                    event.preventDefault()
+                }
+            })
+            .catch((erro) => console.log(erro))
+        } else {
+            event.preventDefault();
+            let cadastro = {
+                marca : marca,
+                tipo : tipo,
+                numeroSerie : numeroSerie,
+                descricao : descricao,
+                numeroPatrimonio : numeroPatrimonio,
+                disponivel : disponivel
             }
-        )
-
-        .then(resposta => {
-            if(resposta.status === 201){
-                console.log("Equipamento cadastrado!")
-                buscarEquipamentos()
-            }
-        })
-        .catch(erro => {
-            console.log(erro)
-        })
-        
+    
+            axios.post("http://localhost:5000/api/equipamento",cadastro, {
+                    headers : {
+                        'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+                    }
+                }
+            )
+    
+            .then(resposta => {
+                if(resposta.status === 201){
+                    console.log("Equipamento cadastrado!")
+                    buscarEquipamentos()
+                }
+            })
+            .catch(erro => {
+                console.log(erro)
+            })
+            
+        }       
     }
-
     function buscarIdEquipamento(equipamento){
         setMarca(equipamento.marca)
         setTipo(equipamento.tipo)
@@ -73,27 +104,7 @@ function Equipamento(){
         setNumeroPatrimonio(equipamento.numeroPatrimonio)
         setDescricao(equipamento.descricao)
         setIdEquipamento(equipamento.idEquipamento)
-        console.log('O Equipamento ' + equipamento.idEquipamento + ' foi selecionado; O idEquipamentoAlterado agora é: '+idEquipamento)
-    }
-
-    function atualizarEquipamento(event){
-        event.preventDefault()
-        let equipamentos = {
-            marca : marca,
-            tipo : tipo,
-            numeroSerie : numeroSerie,
-            descricao : descricao,
-            numeroPatrimonio : numeroPatrimonio,
-            disponivel : true
-        }
-        axios.patch('http://localhost:5000/api/equipamento/'+idEquipamento,equipamentos)
-        .then(resposta => {
-            if(resposta.data === 204){
-                console.log('Equipamento atualizado!')
-                buscarEquipamentos()
-            }
-        })
-        .catch(erro => console.log(erro))
+        console.log('O Equipamento ' + equipamento.idEquipamento + ' foi selecionado; O idEquipamentoAlterado agora é: '+ equipamento.idEquipamento)
     }
 
     function excluirEquipamento(equipamento){
@@ -121,7 +132,7 @@ function Equipamento(){
                         </div>
                     </div>
 
-                    <form  onSubmit={idEquipamento === 0 ? cadastrarEquipamentos : atualizarEquipamento} className="form content">
+                    <form  onSubmit={cadastrarEquipamentos} className="form content">
                         <div className="grid_1">
                             <select  className="select-tipo" name="tipo" value={tipo} onChange={(event) => setTipo(event.target.value)} required>
                                 <option Disabled value="0">Selecione o tipo de equipamento</option>
@@ -159,7 +170,12 @@ function Equipamento(){
                     </div>
 
                             <div className="grid_1"id="botao">
-                                <button type="submit" name="button">Cadastrar</button>
+                                <button className="btn-cadastro" disabled={descricao === '' ? 'none' : '' } type="submit">
+                                    {
+                                        idEquipamento === 0 ? 'Cadastrar' : 'Atualizar'
+                                    }
+                                </button>
+                                <button className="clean" disabled={idEquipamento === 0 ? true : false} onClick={limparCampos}>Limpar</button>
                             </div>
                     
                     </form>
@@ -167,14 +183,13 @@ function Equipamento(){
               <section className="Tabela">
               <table>
                     <thead>
-                        <td>#</td>
-                        <td>Marca</td>
-                        <td>Tipo</td>
-                        <td>Numero de Serie</td>
-                        <td>Descricao</td>
-                        <td>Numero do Patrimonio</td>
-                        <td>Disponivel</td>
-                        <td>Ações</td>
+                        <td className="td-h">Marca</td>
+                        <td className="td-h">Tipo</td>
+                        <td className="td-h">Numero de Serie</td>
+                        <td className="td-h">Descricao</td>
+                        <td className="td-h">Numero do Patrimonio</td>
+                        <td className="td-h">Disponivel</td>
+                        <td style={{width:"100px"}} className="td-h">Ações</td>
                     </thead>
 
                     <tbody>
@@ -183,7 +198,6 @@ function Equipamento(){
                                 return(
                                     
                                     <tr key={equipamento.idEquipamento}>
-                                        <td>{equipamento.idEquipamento}</td>
                                         <td>{equipamento.marca}</td>
                                         <td>{equipamento.tipo}</td>
                                         <td>{equipamento.numeroSerie}</td>
@@ -193,8 +207,9 @@ function Equipamento(){
                                             equipamento.disponivel == true && "Ativo" || "Inativo"
                                             }
                                         </td>
-                                        <button onClick={() => buscarIdEquipamento(equipamento)}>Editar</button>
-                                        <button onClick={() => excluirEquipamento(equipamento)}>Excluir</button>
+                                        <button  className="btnt-ed" onClick={() => buscarIdEquipamento(equipamento)}>Editar</button>
+                                        <button className="btnt-ex" onClick={() => excluirEquipamento(equipamento)}>Excluir</button>
+                                      
                                     </tr>
                                 )
                             })

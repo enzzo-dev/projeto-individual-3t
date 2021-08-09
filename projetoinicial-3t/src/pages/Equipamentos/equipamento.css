@@ -40,6 +40,7 @@ body hr{
 .titulo-cadastrarEquipamento h1{
     margin-bottom: 10px;
     font-family: 'Bebas Neue', cursive;
+    
     font-size: 3.5rem;
 }
 
@@ -75,7 +76,7 @@ body hr{
     background-image: url('../../assets/img/Polygon3.png');
     -moz-appearance: none;
     background-repeat: no-repeat;
-    background-position: 490px center;
+    background-position: 650px center;
     padding-left: 10px;
 }
 
@@ -88,6 +89,7 @@ body hr{
     font-size: 1.1rem;
     color: rgb(110,109,109);
     margin-bottom: 10px;
+    
 }
 
 .descricao{
@@ -132,12 +134,125 @@ body hr{
 }
 
 .Tabela{
-    width: 100%;
+    width: 98%;
     height: 100%;
     text-align: center;
-    margin: 4rem 2rem;
+    margin: 4rem 0.5rem;
 }
 
 .Tabela table{
     width: 100%;
+}
+
+.Tabela > table > thead > td{
+    background-color: #b8191c;
+    color: rgb(255, 255, 255);
+    font-family: 'Bebas Neue', cursive;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    padding: 10px;
+    width: 100px;
+}
+
+.Tabela > table > tbody > tr > td{
+    background-color: #dfdfdf;
+    color: black;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 16px;
+    border-right: 0.5px solid rgb(173, 173, 173);
+    
+    letter-spacing: 1px;
+}
+
+.td-h{
+    color: #761C1E;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.btnt-ex{
+    background-color: #d71111;
+    border: 0;
+    width: 100%;
+    color: white;
+    height: 70%;
+    margin-top: 0.5vh;
+    border-radius: 10px 20px 30px
+}
+
+.btnt-ex:hover{
+    background-color: white;
+    color: #d71111;
+    cursor: pointer;
+    border: 1px solid #d71111;
+}
+
+.btnt-ex:disabled{
+    color: #A7A7A7;
+    background-color: grey;
+    border: 0;
+    cursor: not-allowed;
+}
+
+.clean{
+    background-color: #264E73;
+    border: 0;
+    width: 100%;
+    color: white;
+    height: 50%;
+    margin-top: 0.5vh;
+}
+
+.clean:disabled{
+    color: #A7A7A7;
+    background-color: grey;
+    border: 0;
+    cursor: not-allowed;
+}
+
+.clean:hover{
+    background-color: white;
+    color: #d71111;
+    cursor: pointer;
+    border: 1px solid #d71111;
+}
+
+.btn-cadastro{
+    background-color: #264E73;
+    border: 0;
+    width: 100%;
+    color: white;
+    height: 50%;
+    margin-top: 0.5vh;
+}
+
+.btn-cadastro:disabled{
+    color: #A7A7A7;
+    background-color: grey;
+    border: 0;
+    cursor: not-allowed;
+}
+
+.btn-cadastro:hover{
+    background-color: white;
+    color: #d71111;
+    cursor: pointer;
+    border: 1px solid #d71111;
+}
+
+.btnt-ed{
+    background-color: #d71111;
+    border: 0;
+    width: 100%;
+    color: white;
+    height: 70%;
+    margin-top: 2vh;
+    border-radius: 10px 20px 30px 
+}
+
+.btnt-ed:hover{
+    background-color: white;
+    color: #d71111;
+    cursor: pointer;
+    border: 1px solid #d71111;
 }

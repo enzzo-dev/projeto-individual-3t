@@ -24,6 +24,7 @@ namespace ProjetoInicial.webApi.Repositories
                 equipamentoBuscado.NumeroSerie = equipamentoAtualizado.NumeroSerie;
                 equipamentoBuscado.NumeroPatrimonio = equipamentoAtualizado.NumeroPatrimonio;
                 equipamentoBuscado.Disponivel = equipamentoAtualizado.Disponivel;
+                equipamentoBuscado.Descricao = equipamentoAtualizado.Descricao;
             }
 
             ctx.Equipamentos.Update(equipamentoBuscado);
