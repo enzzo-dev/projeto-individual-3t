@@ -10,6 +10,8 @@ namespace ProjetoInicial.webApi.Interfaces
     {
         List<Sala> ListarTodos(int id);
 
+        List<Sala> Listar();
+
         void Cadastrar(Sala novaSala);
 
         void Atualizar(int id, Sala salaAtualizada);

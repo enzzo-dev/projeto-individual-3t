@@ -147,6 +147,7 @@ body hr{
 
 .Tabela table{
     width: 100%;
+    height: 100%;
 }
 
 .Tabela > table > thead > td{
@@ -180,7 +181,7 @@ body hr{
     border: 0;
     width: 100%;
     color: white;
-    height: 70%;
+    height: 30%;
     margin-top: 0.5vh;
     border-radius: 10px 20px 30px
 }
@@ -250,8 +251,8 @@ body hr{
     border: 0;
     width: 100%;
     color: white;
-    height: 70%;
-    margin-top: 2vh;
+    height: 30%;
+    margin-top: 1.5vh;
     border-radius: 10px 20px 30px 
 }
 
@@ -260,4 +261,10 @@ body hr{
     color: #d71111;
     cursor: pointer;
     border: 1px solid #d71111;
+}
+
+.listagem{
+    display: flex;
+    flex-direction: column;
+
 }

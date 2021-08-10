@@ -31,7 +31,7 @@ GO
 
 CREATE TABLE salas(
 	idSala				INT PRIMARY KEY IDENTITY,
-	andar				INT NOT NULL UNIQUE,
+	andar				INT NOT NULL,
 	nome				VARCHAR(100) NOT NULL,
 	metragem			INT NOT NULL,
 	idUsuario			INT FOREIGN KEY REFERENCES usuario(idUsuario)
@@ -45,7 +45,11 @@ CREATE TABLE salasEquipamentos(
 )
 GO
 
-SELECT * FROM usuario
+SELECT * FROM salas;
+ALTER TABLE salas 
+ALTER COLUMN andar INT NOT NULL;
 
-Delete  From equipamentos WHERE marca = "Panasonic";
+SHOW INDEXES FROM salas;
+
+Delete  From salas WHERE idSala = 25;
 

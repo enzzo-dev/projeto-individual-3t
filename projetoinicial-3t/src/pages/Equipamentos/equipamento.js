@@ -90,6 +90,7 @@ function Equipamento(){
                 if(resposta.status === 201){
                     console.log("Equipamento cadastrado!")
                     buscarEquipamentos()
+                    limparCampos()
                 }
             })
             .catch(erro => {
@@ -125,7 +126,6 @@ function Equipamento(){
         <div>
             <Helmet>
                 <title>SM - Equipamentos</title>
-                <link rel="icon" type="image/ico" href="https://www.sp.senai.br/favicon.ico"></link>
             </Helmet>
             <Header />
            <main>

@@ -19,15 +19,15 @@ function Sala(){
 
         let id = parseJwt().jti
 
-        setIdUsuario(id);
+        setIdUsuario(id)
+
 
         if(idSalaAlterado !== 0){
 
             let salaAlterado = {
                 nome : nome,
                 andar : andar,
-                metragem : metragem,
-                idUsuario : idUsuario
+                metragem : metragem
             }
             axios.put('http://localhost:5000/api/sala/'+ idSalaAlterado, salaAlterado, {
                 headers : {
@@ -44,11 +44,11 @@ function Sala(){
 
             .catch((erro) => console.log(erro))
         } else {
+
         let sala = {
             andar : andar,
             nome : nome,
-            metragem : metragem,
-            idUsuario : idUsuario
+            metragem : metragem
         }
         axios.post('http://localhost:5000/api/sala', sala, {
             headers : {
@@ -68,7 +68,7 @@ function Sala(){
     }
 
     function buscarSalas(){
-        axios.get('http://localhost:5000/api/sala/' + parseJwt().jti, {
+        axios.get('http://localhost:5000/api/sala', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -138,7 +138,7 @@ useEffect(buscarSalas, [])
                     <form  onSubmit={cadastrarSala} className="form content">
                         <div className="grid_1">
                             <input type="text"  value={nome} onChange={(event) => setNome(event.target.value)} name="nome" placeholder="Nome:" class="input watermark" required />
-                            <input type="text"  value={metragem} onChange={(event) => setMetragem(event.target.value)} name="email" placeholder="Email:" class="input watermark" required /><label>M²</label>
+                            <input type="text"  value={metragem} onChange={(event) => setMetragem(event.target.value)} name="email" placeholder="Metragem:" class="input watermark" required /><label>M²</label>
                         </div>
 
                         <div className="grid_1">  
@@ -151,6 +151,7 @@ useEffect(buscarSalas, [])
                             <option value="5">5° Andar</option>
                             <option value="6">6° Andar</option>
                             <option value="7">7° Andar</option>
+                            <option value="8">8° Andar</option>
                         </select>    
                         </div>
 
@@ -183,10 +184,8 @@ useEffect(buscarSalas, [])
                                         <td>{sala.nome}</td>
                                         <td>{sala.andar}</td>
                                         <td>{sala.metragem}</td>
-
                                         <button  className="btnt-ed" onClick={() => buscarIdSala(sala)}>Editar</button>
                                         <button className="btnt-ex" onClick={() => excluirSala(sala)}>Excluir</button>
-                                      
                                     </tr>
                                 )
                             })

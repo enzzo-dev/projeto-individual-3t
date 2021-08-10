@@ -8,6 +8,7 @@ using ProjetoInicial.webApi.Interfaces;
 using ProjetoInicial.webApi.Domains;
 using ProjetoInicial.webApi.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace ProjetoInicial.webApi.Controllers
 {
@@ -28,16 +29,32 @@ namespace ProjetoInicial.webApi.Controllers
         /// </summary>
         /// <returns>Retorna uma lista de salas</returns>
         [Authorize]
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet]
+        public IActionResult Get()
         {
             try
             {
+                int id = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
                 return Ok(_salaRepository.ListarTodos(id));
             }
             catch (Exception e)
             {
                 return BadRequest(e);
+            }
+        }
+
+        [Authorize]
+        [HttpGet("listar")]
+        public IActionResult GetList()
+        {
+            try
+            {
+                return Ok(_salaRepository.Listar());
+
+            } catch (Exception er)
+            {
+                return BadRequest(er);
             }
         }
 

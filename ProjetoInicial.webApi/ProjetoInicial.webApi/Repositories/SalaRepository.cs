@@ -47,6 +47,11 @@ namespace ProjetoInicial.webApi.Repositories
             }
         }
 
+        public List<Sala> Listar()
+        {
+            return ctx.Salas.ToList();
+        }
+
         public List<Sala> ListarTodos(int id)
         {
 
