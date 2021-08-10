@@ -68,7 +68,9 @@ function Sala(){
     }
 
     function buscarSalas(){
-        axios.get('http://localhost:5000/api/sala', {
+
+        if(parseJwt().role === "1"){
+            axios.get('http://localhost:5000/api/sala/listar', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -82,6 +84,24 @@ function Sala(){
         })
 
         .catch((erro) => console.log(erro))
+        } else if(parseJwt().role === "2"){
+            axios.get('http://localhost:5000/api/sala', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+
+        .then(resposta => {
+            if(resposta.status === 200){
+                setListaSalas(resposta.data)
+                console.log('listando salas!')
+            }
+        })
+
+        .catch((erro) => console.log(erro))
+        }
+
+        
     }
 
     function limparCampos(){

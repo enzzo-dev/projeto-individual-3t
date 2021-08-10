@@ -67,7 +67,7 @@ namespace ProjetoInicial.webApi.Controllers
         /// <param name="id">Id do equipamento que será atualizado</param>
         /// <param name="equipamentoAtualizado">Credenciais atualizadas desse equipamento</param>
         /// <returns>Retorna um StatusCode NoContent</returns>
-        [Authorize]
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Equipamento equipamentoAtualizado)
         {
@@ -101,7 +101,7 @@ namespace ProjetoInicial.webApi.Controllers
         /// </summary>
         /// <param name="id">Id do equipamento que será deletado</param>
         /// <returns>Retorna um Status Code NoContent</returns>
-        [Authorize]
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

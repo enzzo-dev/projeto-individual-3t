@@ -3,11 +3,6 @@ import logo from '../../assets/img/senai-logo.png'
 
 
  function Header(){
-
-    function logout(){
-        localStorage.removeItem('usuario-login')
-    }
-
     return(
         <div>
             <header className="cabecalho-principal">
@@ -17,7 +12,7 @@ import logo from '../../assets/img/senai-logo.png'
                         <a href="/cadastrarsala">Salas</a>
                         <a href="/cadastrarequipamento">Equipamentos</a>
                         <a href="/cadastrarusuario">Usuários</a>
-                        <a onClick={ () => logout} href="/">Sair</a>
+                        <a onClick={ () => localStorage.removeItem('usuario-login')} href="/">Sair</a>
                     </nav>
                 </div>
             </header>        

@@ -85,7 +85,7 @@ namespace ProjetoInicial.webApi.Controllers
         /// <param name="salaAtualizada">Credenciais atualizadas da sala</param>
         /// <returns>Retorna um StatusCode NoContent</returns>
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "1")]
         public IActionResult Put(int id, Sala salaAtualizada)
         {
             try
