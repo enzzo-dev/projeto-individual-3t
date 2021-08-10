@@ -143,7 +143,7 @@ useEffect(buscarSalas, [])
     return(
         <div>
             <Helmet>
-                <title>SM - Sala</title>
+                <title>SMMS - Sala</title>
             </Helmet>
             <Header />
             <main>
@@ -202,8 +202,8 @@ useEffect(buscarSalas, [])
                                     
                                     <tr key={sala.idSala}>
                                         <td>{sala.nome}</td>
-                                        <td>{sala.andar}</td>
-                                        <td>{sala.metragem}</td>
+                                        <td>{sala.andar}°</td>
+                                        <td>{sala.metragem}M²</td>
                                         <button  className="btnt-ed" onClick={() => buscarIdSala(sala)}>Editar</button>
                                         <button className="btnt-ex" onClick={() => excluirSala(sala)}>Excluir</button>
                                     </tr>

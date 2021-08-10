@@ -42,7 +42,7 @@ function Login(){
         return(
             <div className="bodyLgn">
                 <Helmet>
-                    <title>SM - Login</title>
+                    <title>SMMS - Login</title>
                 </Helmet>
                 {/* <form onSubmit={efetuaLogin}>
                     <h2>Login:</h2>

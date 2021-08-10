@@ -135,7 +135,7 @@ function Usuario(){
     return(
         <div>
             <Helmet>
-                    <title>SM - Usuário</title>
+                    <title>SMMS - Usuário</title>
             </Helmet>
             <Header />
             <main>

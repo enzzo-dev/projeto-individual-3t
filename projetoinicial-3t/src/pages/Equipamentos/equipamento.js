@@ -110,7 +110,11 @@ function Equipamento(){
     }
 
     function excluirEquipamento(equipamento){
-        axios.delete('http://localhost:5000/api/equipamento/' + equipamento.idEquipamento)
+        axios.delete('http://localhost:5000/api/equipamento/' + equipamento.idEquipamento, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
         .then(resposta => {
             if(resposta.status === 204){
                 console.log("O equipamento "+ equipamento.idEquipamento +" foi excluído")
@@ -125,7 +129,7 @@ function Equipamento(){
     return(
         <div>
             <Helmet>
-                <title>SM - Equipamentos</title>
+                <title>SMMS - Equipamentos</title>
             </Helmet>
             <Header />
            <main>

@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="App">
       <Helmet>
-        <title>SM - Home</title>
+        <title>SMMS - Home</title>
       </Helmet>
       <Header />
       <section className="listagem">
@@ -125,7 +125,7 @@ function App() {
                                     <tr key={sala.idSala}>
                                         <td>{sala.nome}</td>
                                         <td>{sala.andar}°</td>
-                                        <td>{sala.metragem}</td>
+                                        <td>{sala.metragem}M²</td>
                                     </tr>
                                 )
                             })

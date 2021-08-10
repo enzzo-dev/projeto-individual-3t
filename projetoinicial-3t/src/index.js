@@ -10,11 +10,24 @@ import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom
 import Login from './pages/Login/login';
 import { parseJwt, usuarioAutenticado } from './services/auth';
 
-const PermissaoAdm = ({ component : Component  }) => (
+const Permissao = ({ component : Component  }) => (
   <Route 
     render = { props =>
       // Verifica se o usuário está logado e se é Administrador
       usuarioAutenticado() && parseJwt().role === "1" || usuarioAutenticado() && parseJwt().role === "2"  ? 
+      // Se sim, renderiza de acordo com a rota solicitada e permitida
+      <Component {...props} /> : 
+      // Se não, redireciona para a página de login
+      <Redirect to = '/' />
+    }
+  />
+);
+
+const PermissaoAdm = ({ component : Component  }) => (
+  <Route 
+    render = { props =>
+      // Verifica se o usuário está logado e se é Administrador
+      usuarioAutenticado() && parseJwt().role === "1"   ? 
       // Se sim, renderiza de acordo com a rota solicitada e permitida
       <Component {...props} /> : 
       // Se não, redireciona para a página de login
@@ -28,10 +41,10 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={Login} />
-        <PermissaoAdm exact path="/home" component={App} />
+        <Permissao exact path="/home" component={App} />
         <PermissaoAdm  exact path="/cadastrarusuario" component={Usuario} />
-        <PermissaoAdm  exact path="/cadastrarequipamento" component={Equipamento} />
-        <PermissaoAdm  exact path="/cadastrarsala" component={Sala} />
+        <Permissao  exact path="/cadastrarequipamento" component={Equipamento} />
+        <Permissao  exact path="/cadastrarsala" component={Sala} />
         <Route exact path="/notfound" component={notFound} />
 
         <Redirect to="/notfound" />
